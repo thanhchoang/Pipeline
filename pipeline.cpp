@@ -10,7 +10,7 @@ int main()
 	cout << firstnum << " ---- " << secondnum << " ----" << thirdnum << " -----" << endl;
 
 	double result = firstnum * secondnum * thirdnum;
-	cout << " The result is: " << result << endl;
+	cout << "The result is: " << result << endl;
 
 	return 0;
 }
