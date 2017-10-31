@@ -9,6 +9,7 @@ pipeline{
         }
         stage('Test'){
             steps {
+		make
                 echo 'Testing..'
             }
         }
