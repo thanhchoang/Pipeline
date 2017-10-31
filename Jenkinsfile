@@ -4,19 +4,19 @@ pipeline{
     stages {
         stage('Build'){
             steps {
-		ls;
+		ls
                 echo 'Building..'
             }
         }
         stage('Test'){
             steps {
-		make;
+		make
                 echo 'Testing..'
             }
         }
         stage('Deploy'){
             steps {
-		make clean;
+		make clean
                 echo 'Deploying...'
             }
         }
