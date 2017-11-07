@@ -24,13 +24,13 @@ pipeline{
                 }
                 echo 'Emails sent'
             }
+          }
         stage('Clean'){
             steps {
                 echo 'Testing..'
                 // shell command "make clean"
                 sh 'make clean'
             }
-        }
         }
     }
 }
