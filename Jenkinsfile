@@ -14,14 +14,14 @@ pipeline{
         stage('Email'){
             steps {
                 echo 'Sending Emails'
-                if (${currentBuild.result} == "SUCCESS")
-                {
+                //if (${currentBuild.result} == "SUCCESS")
+//                {
                   sendEmail("JenkinTrial@gmail.com ; thanh.hoang@abaco.com")
-                }
-                else
-                {
-                  sendEmail("thanh.hoang@abaco.com")
-                }
+//                }
+  //              else
+    //            {
+      //            sendEmail("thanh.hoang@abaco.com")
+      //          }
                 echo 'Emails sent'
             }
           }
