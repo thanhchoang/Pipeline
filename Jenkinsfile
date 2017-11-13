@@ -1,7 +1,6 @@
 // pipeline{
 //  agent any
-def e = null
-
+// def e = null
 node("master")
 {
   stage ("checkout")
