@@ -34,7 +34,7 @@ node("master")
   {
     stage("Email")
     {
-      if (${currentBuild.result} == "SUCCESS")
+      if (currentBuild.result == "SUCCESS")
         {
           sendEmail("JenkinTrial@gmail.com ; thanh.hoang@abaco.com")
         }
