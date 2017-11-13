@@ -19,7 +19,7 @@ node("master")
     stage('Build')
     {
         echo 'Building..'               // echo to test
-        checkout scm                  // shell command "make"
+//        checkout scm                  // shell command "make"
         sh 'make'
       }
   }
