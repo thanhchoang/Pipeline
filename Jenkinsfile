@@ -1,7 +1,14 @@
 pipeline{
     agent any
 
-    stages {
+    try {
+        stage('Clean'){
+            steps {
+                echo 'Testing..'
+                // shell command "make clean"
+                sh 'make clean'
+            }
+        }
         stage('Build'){
             steps {
 	              // echo to test
@@ -11,27 +18,27 @@ pipeline{
 	              sh 'make'
             }
         }
-        stage('Email'){
-            steps {
-                echo 'Sending Emails'
-                //if (${currentBuild.result} == "SUCCESS")
-//                {
-                  sendEmail("JenkinTrial@gmail.com ; thanh.hoang@abaco.com")
-//                }
-  //              else
-    //            {
-      //            sendEmail("thanh.hoang@abaco.com")
-      //          }
-                echo 'Emails sent'
-            }
+      }
+    catch (e)
+    {
+      currentBuild.result = "FAILURE"
+      throw e
+    }
+    finally
+    {
+      stage('Email')
+      {
+        echo 'Sending Emails'
+        if (${currentBuild.result} == "SUCCESS")
+          {
+            sendEmail("JenkinTrial@gmail.com ; thanh.hoang@abaco.com")
           }
-        stage('Clean'){
-            steps {
-                echo 'Testing..'
-                // shell command "make clean"
-                sh 'make clean'
-            }
-        }
+        else
+          {
+            sendEmail("thanh.hoang@abaco.com")
+          }
+        echo 'Emails sent'
+          }
     }
 }
 
@@ -42,7 +49,7 @@ def sendEmail(address)
     subject: "\${PROJECT_NAME} Build #\${BUILD_NUMBER} \${BUILD_STATUS}",
     body: """Project URL: \${BUILD_URL}
 
-    Build logs
-    \$ {BUILD_LOG}""",
-  )
+Build logs
+\${BUILD_LOG}""",
+    )
 }
