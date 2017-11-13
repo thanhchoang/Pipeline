@@ -1,5 +1,9 @@
-pipeline{
-  agent any
+// pipeline{
+//  agent any
+def e = null
+
+node("master")
+{
   stage ("checkout")
   {
     checkout scm
@@ -31,7 +35,6 @@ pipeline{
   {
     stage("Email")
     {
-      echo 'Sending Emails'
       if (${currentBuild.result} == "SUCCESS")
         {
           sendEmail("JenkinTrial@gmail.com ; thanh.hoang@abaco.com")
@@ -40,7 +43,6 @@ pipeline{
         {
           sendEmail("thanh.hoang@abaco.com")
         }
-      echo 'Emails sent'
     }
   }
 }
