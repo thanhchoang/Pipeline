@@ -20,7 +20,7 @@ node("master")
     {
         echo 'Building..'               // echo to test
 //        checkout scm                  // shell command "make"
-        sh 'make'
+        sh 'make blah'
       }
   }
 
