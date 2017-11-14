@@ -13,14 +13,14 @@ node("master")
     stage("Clean")
     {
       echo 'Testing..'
-//      sh 'make clean'           // shell command "make clean"
+      sh 'make clean'           // shell command "make clean"
     }
 
     stage('Build')
     {
         echo 'Building..'               // echo to test
 //        checkout scm                  // shell command "make"
-        sh 'make blah'
+        sh 'make'
       }
   }
 
